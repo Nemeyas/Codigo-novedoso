@@ -2,58 +2,65 @@
 #Restricciones: No violar la privacidad del usuario.
 #Salida: Reporte del estado de salud mental del usuario.
 
+import keyboard
 
 def analizar_estado_animo():
-    pulso_cardiaco = int(input("Ingresa tu pulso cardiaco: "))
-    volumen_voz = int(input("Ingresa el volumen de tu voz (decibelios): "))
-    tiempo_redes_sociales = float(input("Ingresa el tiempo de uso en horas de redes sociales: "))
-    
-    promedio_pulso = 75  # Supongamos que el promedio de pulso es 75
-    promedio_tiempo_redes = 4  # Supongamos que el promedio de tiempo en redes es 4
-    
-    if pulso_cardiaco > promedio_pulso:
-        print("Tu pulso está por encima del promedio.")
+    while True:
+        pulso_cardiaco = int(input("Ingresa tu pulso cardiaco: "))
+        volumen_voz = int(input("Ingresa el volumen de tu voz (decibelios): "))
+        tiempo_redes_sociales = float(input("Ingresa el tiempo de uso en horas de redes sociales: "))
         
-        if tiempo_redes_sociales > promedio_tiempo_redes:
-            print("Tienes indicios de desánimo.")
-        else:
-            if volumen_voz == 0:
-                print("Estás en reposo.")
-            elif 0 < volumen_voz < 50:
-                print("Estás deprimido.")
-            elif 50 <= volumen_voz <= 65:
-                print("Estás pensativo.")
-            else:
-                print("Estás eufórico.")
-                
-    elif pulso_cardiaco == promedio_pulso:
-        print("Tu pulso está en el promedio.")
+        promedio_pulso = 75  # Supongamos que el promedio de pulso es 75
+        promedio_tiempo_redes = 4  # Supongamos que el promedio de tiempo en redes es 4
         
-        if tiempo_redes_sociales > promedio_tiempo_redes:
-            print("Estás distraído.")
-        else:
-            if 0 < volumen_voz < 50:
-                print("Estás conversando.")
-            elif 50 <= volumen_voz <= 65:
-                print("Estás conversando.")
-            elif 65 < volumen_voz < 80:
-                print("Estás inspirado.")
+        if pulso_cardiaco > promedio_pulso:
+            print("Tu pulso está por encima del promedio.")
+            
+            if tiempo_redes_sociales > promedio_tiempo_redes:
+                print("Tienes indicios de desánimo.")
             else:
-                print("Estás emocionado.")
-                
-    else:
-        print("Tu pulso está por debajo del promedio.")
+                if volumen_voz == 0:
+                    print("Estás en reposo.")
+                elif 0 < volumen_voz < 50:
+                    print("Estás deprimido.")
+                elif 50 <= volumen_voz <= 65:
+                    print("Estás pensativo.")
+                else:
+                    print("Estás eufórico.")
+                    
+        elif pulso_cardiaco == promedio_pulso:
+            print("Tu pulso está en el promedio.")
+            
+            if tiempo_redes_sociales > promedio_tiempo_redes:
+                print("Estás distraído.")
+            else:
+                if 0 < volumen_voz < 50:
+                    print("Estás conversando.")
+                elif 50 <= volumen_voz <= 65:
+                    print("Estás conversando.")
+                elif 65 < volumen_voz < 80:
+                    print("Estás inspirado.")
+                else:
+                    print("Estás emocionado.")
+                    
+        else:
+            print("Tu pulso está por debajo del promedio.")
+            
+            if tiempo_redes_sociales > promedio_tiempo_redes:
+                print("Tienes indicios de desánimo.")
+            else:
+                if volumen_voz == 0:
+                    print("Estás en reposo.")
+                elif 0 < volumen_voz < 50:
+                    print("Estás deprimido.")
+                elif 50 <= volumen_voz <= 65:
+                    print("Estás conversando.")
+                else:
+                    print("Estás eufórico.")
         
-        if tiempo_redes_sociales > promedio_tiempo_redes:
-            print("Tienes indicios de desánimo.")
-        else:
-            if volumen_voz == 0:
-                print("Estás en reposo.")
-            elif 0 < volumen_voz < 50:
-                print("Estás deprimido.")
-            elif 50 <= volumen_voz <= 65:
-                print("Estás conversando.")
-            else:
-                print("Estás eufórico.")
+        if keyboard.is_pressed('esc'):
+            cerrar = input("¿Quieres cerrar la aplicación de 'Bienestar mental'? (Si/No): ")
+            if cerrar.lower() == "si":
+                break
 
 analizar_estado_animo()
